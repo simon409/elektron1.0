@@ -1,10 +1,10 @@
-# Tech Store Website
+# Elektron Website
 
-This is a tech store website built with Next.js, Tailwind CSS, Stripe, and Strapi.
+This is a store website built with Next.js, Tailwind CSS, Stripe, and Strapi.
 
 ## Features
 
-- Browse and search for tech products
+- Browse and search for products
 - Add products to the shopping cart
 - Checkout using Stripe for secure payments
 - Manage products and inventory using Strapi CMS
