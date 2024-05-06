@@ -35,7 +35,7 @@ const getProductsByCategory = async ({category_id}) => {
 }
 
 const getRating = async ({productId}) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/reviews?filters[product_id]=${productId}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/reviews?filters[product_id]=${productId}&populate=*`, {
       method: "GET",
       cache: "no-cache",
       next: {

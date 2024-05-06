@@ -1,16 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const Login = () => {
-
-  useEffect(() => {
-    // Get the current URL using window.location.href
-    const currentURL = window.location.href;
-    console.log('Current URL:', currentURL);
-  }, []);
-
   return (
     <div>
-      <h1>My Component</h1>
+      <h1>Login</h1>
     </div>
   )
 }
