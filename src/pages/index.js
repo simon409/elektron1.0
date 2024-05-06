@@ -4,7 +4,7 @@ import getHomeData from "@/utils/homeApis";
 import { SiSamsung, SiHuawei, SiAsus, SiDell, SiHp } from 'react-icons/si'
 import { BsApple,  } from 'react-icons/bs'
 import { getLatestProducts } from "@/utils/productsApis";
-import ProductCard from "./Components/ProductCard";
+import ProductCard from "./components/productCard/ProductCard";
 
 const inter = Roboto({ subsets: ["latin"], weight: ['400', '700'] });
 
@@ -20,6 +20,7 @@ const sketelonLoding = () => {
 }
 
 export default function Home({ homeData, latestProducts }) {
+
   // Accessing title only when heroData is available
   const title = homeData ? homeData.attributes.title : '';
   const description = homeData ? homeData.attributes.description[0].children[0].text : '';

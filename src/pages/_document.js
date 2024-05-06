@@ -1,8 +1,9 @@
-import Footer from "@/components/headerFooter/Footer";
-import Header from "@/components/headerFooter/Header";
+import Footer from "./components/headerFooter/Footer";
+import Header from "./components/headerFooter/Header";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
+
   return (
     <Html lang="en">
       <Head />

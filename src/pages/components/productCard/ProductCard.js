@@ -33,7 +33,7 @@ const ProductCard = ({name, price, discount, slug, finalPrice , imageUrl, id }) 
                 <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">{discount}% OFF</span>
             </div>
             <div className="mt-4 px-5">
-                <h5 id={`product-${id}-name`} className="text-xl tracking-tight text-slate-900 font-bold">{name.length > 28 ? name.substring(0, 28) + "..." : name}</h5>
+                <h5 id={`product-${id}-name`} className="text-xl tracking-tight text-slate-900 font-bold">{name.length > 26 ? name.substring(0, 26) + "..." : name}</h5>
                 <div className="mt-2 flex flex-col">
                     <div className="flex items-center ml-auto">
                         {[...Array(5)].map((_, index) => (
