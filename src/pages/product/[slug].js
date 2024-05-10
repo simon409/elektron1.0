@@ -1,7 +1,7 @@
 import { getProductBySlug, getProductsByCategory, getRating } from '@/utils/productsApis';
-import React, { useEffect, useState } from 'react';
-import ProductCard from '../components/productCard/ProductCard';
-import ReviewCard from '../components/ReviewsCard/ReviewsCard';
+import { useEffect, useState } from 'react';
+import ProductCard from '../components/Cards/ProductCard';
+import ReviewCard from '../components/Cards/ReviewsCard';
 import { BiCart, BiHeart } from 'react-icons/bi';
 import Button from '@/sections/Button';
 
@@ -74,7 +74,7 @@ const Product = ({ content }) => {
             }
           </ul>
           <div className='flex items-center space-x-4 my-5'>
-            <Button Icon={BiCart} content={available ? "Add to Cart" : "Out of stock"} bgcolor="slate-900" textcolor="white" focusbgcolor="slate-700"/>
+            <Button Icon={BiCart} content={available ? "Add to Cart" : "Out of stock"} bgcolor="black" textcolor="white" focusbgcolor="slate-700"/>
             <Button Icon={BiHeart} content="Add to Wishlist" bgcolor="slate-100" focusbgcolor="slate-200"/>
           </div>
           <p className='text-sm text-gray-500'>Free shipping on orders over $50</p>
@@ -84,7 +84,7 @@ const Product = ({ content }) => {
         <div className='py-10'>
           <h2 className='text-2xl font-semibold text-gray-800 mb-6'>Related Products</h2>
           <div className="grid place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {relatedProducts.length > 0 ? relatedProducts.slice(0, 4).map((product) => (
+          {relatedProducts.length > 1 ? relatedProducts.slice(0, 4).map((product) => (
               product.id !== id && (
                 <ProductCard
                   id={product.id}

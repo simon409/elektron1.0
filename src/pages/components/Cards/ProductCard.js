@@ -12,14 +12,9 @@ const ProductCard = ({name, price, discount, slug, finalPrice , imageUrl, id }) 
         fetchRating();
     }, [])
 
-    useEffect(() => {
-      console.log(rating)
-    }, [rating])
-
-
     const fetchRating = () => {
         getRating({ productId: id }).then(res => {
-            const ratings = res.data.data; // Array of rating objects
+            const ratings = res.data; // Array of rating objects
             let totalRating = 0;
 
             ratings.forEach(rating => {
@@ -59,7 +54,7 @@ const ProductCard = ({name, price, discount, slug, finalPrice , imageUrl, id }) 
             </div>
         </Link>
         <div className="mt-4 px-5 pb-5">
-           <Button Icon={BiCart} content="Add to Cart" />
+           <Button Icon={BiCart} content="Add to Cart" bgcolor="black" textcolor="white" focusbgcolor="slate-500"/>
         </div>
     </div>
 

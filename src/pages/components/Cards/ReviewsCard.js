@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ReviewsCard = ({comment, rating, createdAt, fullname}) => {
   return (
     <div className="w-full max-w-sm p-4  rounded-lg border border-gray-100 bg-white shadow-md mx-auto">
