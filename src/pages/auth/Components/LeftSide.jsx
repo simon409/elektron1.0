@@ -27,9 +27,9 @@ const LeftSide = () => {
   return (
         <div className='h-full w-full rounded-lg bg-[#F2F4F8]'>
             <div className='h-full </div>w-full flex flex-col justify-between p-10'>
-                <div>
+                <a href="/">
                     <img src="/assets/logo-black.svg" className='w-1/3' alt="" />
-                </div>
+                </a>
                 <div className='flex flex-col gap-3'>
                     <h1 className='text-3xl text-black font-bold'>
                         Welcome to Our Tech Emporium!

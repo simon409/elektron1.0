@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BsApple, BsFacebook, BsGoogle } from 'react-icons/bs';
+import { registerUser } from '@/utils/userApis';
 const FormSchema = z.object({
     username: z.string().min(3, {
         message: "Username must be at least 3 characters",
@@ -41,8 +42,10 @@ const SignUpForm = ({onclick}) => {
         },
     })
 
-    function onSubmit(data) {
-        console.log(data)
+    async function onSubmit(data) {
+        await registerUser(data).then((res) => {
+            alert(res);
+        });
     }
   return (
     <div className='m-auto h-fit w-2/5 p-10 rounded-lg flex flex-col gap-5 relative'>

@@ -27,13 +27,13 @@ const Header = () => {
                     <input type="text" id="input-group-1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="Search ..." />
                 </div>
                 <div className='relative'>
-                    <button className='bg-gray-100 text-black px-2 py-1 rounded-lg text-xl'><BiCartAlt/></button>
+                    <button className='bg-gray-100 text-black px-3 py-3 rounded-lg text-xl'><BiCartAlt/></button>
                     {
                         isCartFull && <span className='absolute top-1 right-2 bg-red-500 text-white rounded-full px-[3px] py-[3px]'></span>
                     }
                 </div>
                 <div className='w-[1px] bg-slate-300 my-1'></div>
-                    <a href='/auth/login' className='bg-black text-white px-5 py-2 rounded-lg'>Sign In</a>
+                    <a href='/auth/login-signup' className='bg-black text-white px-5 py-2 rounded-lg'>Sign In</a>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
     const pathname = this.props.__NEXT_DATA__.page;
 
     // Determine if the current page is login or signup
-    const isLoginOrSignup = pathname === '/auth/login-signup';
+    const isLoginOrSignup = pathname === '/auth/login-signup' || pathname === '/404';
 
     return (
       <Html lang="en">

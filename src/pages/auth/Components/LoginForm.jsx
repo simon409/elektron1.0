@@ -12,9 +12,10 @@ import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { BsApple, BsFacebook, BsGoogle } from 'react-icons/bs';
+import { BsApple } from 'react-icons/bs';
+import { LoginUser } from '@/utils/userApis';
 const FormSchema = z.object({
-    email: z.string().email({
+    identifier: z.string().email({
         message: "Invalid email address",
     }),
     password: z.string().min(8, {
@@ -23,16 +24,19 @@ const FormSchema = z.object({
   })
 
 const LoginForm = ({onclick}) => {
+
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
-            email: "",
+            identifier: "",
             password: "",
         },
     })
 
-    function onSubmit(data) {
-        console.log(data)
+    async function onSubmit(data) {
+        await LoginUser(data.identifier, data.password).then((res) => {
+            console.log(res);
+        });
     }
   return (
     <div className='m-auto h-fit w-2/5 p-10 rounded-lg flex flex-col gap-5 relative'>
@@ -54,7 +58,7 @@ const LoginForm = ({onclick}) => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 z-10">
                         <FormField
                         control={form.control}
-                        name="email"
+                        name="identifier"
                         render={({ field }) => (
                             <FormItem>
                             <FormLabel>Email</FormLabel>
