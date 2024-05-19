@@ -40,6 +40,23 @@ const registerUser = async (userData) => {
 //logout
 
 //get user
+const getUser = async (token) => {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/users/me`, {
+            method: 'GET',
+            headers: {
+                "accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}
 
 //delete user
 
