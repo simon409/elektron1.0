@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { BsApple } from 'react-icons/bs';
 import { LoginUser } from '@/utils/userApis';
+import { useRouter } from 'next/router';
 
 const FormSchema = z.object({
     identifier: z.string().email({
@@ -26,6 +27,8 @@ const FormSchema = z.object({
 
 const LoginForm = ({onclick}) => {
 
+    const router = useRouter();
+
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -36,12 +39,16 @@ const LoginForm = ({onclick}) => {
 
     async function onSubmit(data) {
         await LoginUser(data.identifier, data.password).then((res) => {
-            console.log(res);
+            if (res.jwt) {
+                //redirect to home
+                console.log(res);
+                router.push('/');
+            }
         });
     }
   return (
     <div className='m-auto h-fit w-2/5 p-10 rounded-lg flex flex-col gap-5 relative'>
-                <div className='absolute w-full h-full backdrop-blur-md bg-white/80 rounded-lg left-0 top-0'></div>
+                <div className='absolute w-full h-full backdrop-blur-md bg-white rounded-lg left-0 top-0'></div>
                 <div className='flex flex-col items-center z-10'>
                     <h1 className='text-3xl font-bold'>Welcome Back</h1>
                     <p className='text-gray-500'>Please enter your details to Login</p>
@@ -53,7 +60,7 @@ const LoginForm = ({onclick}) => {
                 </div>
                 <div className='relative z-10'>
                     <hr className='border-gray-400' />
-                    <p className='text-center absolute -top-3 left-1/2 -translate-x-1/2 bg-[#E1DFDC] px-4'>Or</p>
+                    <p className='text-center absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-4'>Or</p>
                 </div>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 z-10">
@@ -87,7 +94,7 @@ const LoginForm = ({onclick}) => {
 
                     </form>
                 </Form>
-                <div className='z-10'>
+                <div className='z-10 mx-auto'>
                     <span>Not a member?</span> {" "}
                     <button onClick={onclick} className='text-[#3B37FF] font-bold'>Sign Up</button>
                 </div>

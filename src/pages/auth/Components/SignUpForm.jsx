@@ -49,7 +49,7 @@ const SignUpForm = ({onclick}) => {
     }
   return (
     <div className='m-auto h-fit w-2/5 p-10 rounded-lg flex flex-col gap-5 relative'>
-                <div className='absolute w-full h-full backdrop-blur-md bg-white/80 rounded-lg left-0 top-0'></div>
+                <div className='absolute w-full h-full backdrop-blur-md bg-white rounded-lg left-0 top-0'></div>
                 <div className='flex flex-col items-center z-10'>
                     <h1 className='text-3xl font-bold'>Welcome</h1>
                     <p className='text-gray-500'>Please enter your details to create your account</p>

@@ -10,9 +10,6 @@ import Categories from "./components/LandingPage/Categories";
 const inter = Lato({ subsets: ["latin"], weight: ['400', '700'] });
 
 export default function Home({ homeData, latestProducts, homeAds, categoriesData }) {
-
-  console.log(categoriesData);
-
   // Accessing title only when heroData is available
   const title = homeData ? homeData.attributes.title : '';
   const description = homeData ? homeData.attributes.description[0].children[0].text : '';

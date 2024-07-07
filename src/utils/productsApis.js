@@ -10,6 +10,18 @@ const getLatestProducts = async () => {
     return response.json();
 }
 
+const getProductById = async ({id}) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/products?filters[id]=${id}&populate=*`, {
+    method: "GET",
+    cache: "no-cache",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_REST_API_KEY}`,
+    },
+  });
+  return response.json();
+}
+
 const getProductBySlug = async ({slug}) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/products?filters[slug]=${slug}&populate=*`, {
     method: "GET",
@@ -50,4 +62,4 @@ const getRating = async ({productId}) => {
 }
 
 
-export { getLatestProducts, getRating, getProductBySlug, getProductsByCategory };
+export { getLatestProducts, getRating, getProductBySlug, getProductsByCategory, getProductById };

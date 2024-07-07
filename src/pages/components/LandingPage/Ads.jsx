@@ -2,8 +2,6 @@ import Button from '@/sections/Button';
 import React from 'react'
 
 const Ads = ({homeAds}) => {
-    console.log(homeAds);
-
     const backgroundImage = homeAds ? homeAds.attributes.background_image.data.attributes.url : '';
     const title = homeAds ? homeAds.attributes.title : '';
     const description = homeAds ? homeAds.attributes.description : '';

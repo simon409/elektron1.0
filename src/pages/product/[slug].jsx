@@ -40,7 +40,6 @@ const Product = ({ content }) => {
         });
     }
   const fetchRelatedProducts = () => {
-    console.log(attributes.category_id.data.id)
     getProductsByCategory({ category_id: attributes.category_id.data.id }).then((res) => {
       setRelatedProducts(res.data);
     });
@@ -68,9 +67,9 @@ const Product = ({ content }) => {
           <p className='text-lg my-2 font-bold'>Features:</p>
           <ul className='text-lg list-disc ml-5'>
             {
-              attributes.features[0].children.map((feature, index) => (
+              attributes.features ? attributes.features[0].children.map((feature, index) => (
                 <li key={index} className='list-item'>{feature.children[0].text}</li>
-              ))
+              )) : <p></p>
             }
           </ul>
           <div className='flex items-center space-x-4 my-5'>
@@ -111,7 +110,7 @@ const Product = ({ content }) => {
               comment={review.attributes.comment}
               rating={review.attributes.rating}
               createdAt={new Date(review.attributes.createdAt).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
-              fullname={review.attributes.customer_id.data.attributes.full_name}
+              fullname={"test"} //review.attributes.customer_id.data.attributes.full_name //TODO: Fix data is undefined
             />
           )) : <p>No reviews found</p>}
         </div>
