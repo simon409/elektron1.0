@@ -32,5 +32,16 @@ const getCategories = async () => {
     return response.json();
 }
 
+const getLimitedOffer = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_REST_API_URL}/limited-offer`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_REST_API_KEY}`,
+      },
+    });
+    return response.json();
+}
 
-export { getHomeData, getHomeAds, getCategories }
+
+export { getHomeData, getHomeAds, getCategories, getLimitedOffer };

@@ -200,7 +200,7 @@ const Header = () => {
                                             <div key={index} className="flex gap-4 items-center border-b pb-3">
                                             <div className="min-w-[60px] min-h-[60px] overflow-hidden rounded-md">
                                                 <Image
-                                                src={item.attributes.image.data.attributes.formats.thumbnail.url}
+                                                src={item.attributes.image.data[0].attributes.formats.thumbnail.url}
                                                 width={60}
                                                 height={60}
                                                 alt={item.attributes.title}

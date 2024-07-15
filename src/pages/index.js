@@ -1,48 +1,29 @@
 import { Lato } from "next/font/google";
-import { getHomeData, getHomeAds, getCategories } from "@/utils/homeApis";
+import { getHomeData, getHomeAds, getCategories, getLimitedOffer } from "@/utils/homeApis";
 import { getLatestProducts } from "@/utils/productsApis";
 import SEO from "@/sections/SEO";
 import Hero from "./components/LandingPage/Hero";
 import LatestProducts from "./components/LandingPage/LatestProducts";
 import Ads from "./components/LandingPage/Ads";
 import Categories from "./components/LandingPage/Categories";
+import LimitedOffer from "./components/LandingPage/LimitedOffer";
 
 const inter = Lato({ subsets: ["latin"], weight: ['400', '700'] });
 
-export default function Home({ homeData, latestProducts, homeAds, categoriesData }) {
-  // Accessing title only when heroData is available
-  const title = homeData ? homeData.attributes.title : '';
-  const description = homeData ? homeData.attributes.description[0].children[0].text : '';
-  const imageUrl = homeData ? homeData.attributes.image.data.attributes.url : '';
+export default function Home({ homeData, latestProducts, homeAds, categoriesData, limitedOfferData }) {
+  const title = homeData?.attributes?.title || '';
+  const description = homeData?.attributes?.description?.[0]?.children?.[0]?.text || '';
+  const imageUrl = homeData?.attributes?.image?.data?.attributes?.url || '';
 
   return (
     <>
-      <SEO title={title} description={description} image={imageUrl}/>
+      <SEO title={title} description={description} image={imageUrl} />
       <main className={`container min-h-screen ${inter.className}`}>
-
         <Hero homeData={homeData} />
-
-        {/*Categories */}
-
         <Categories categoriesData={categoriesData} />
-
-        {/*Featured Products */}
-
-
-
-        {/*Popular Products */}
-
-
-        {/*Latest Products */}
         <LatestProducts latestProducts={latestProducts} />
-
-        {/*Ad Samsung or ...*/}
-        <Ads homeAds={homeAds}/>
-
-        {/*shopping guide */}
-
-        {/*news letter */}
-
+        { limitedOfferData && <LimitedOffer limitedOfferData={limitedOfferData} /> }
+        <Ads homeAds={homeAds} />
       </main>
     </>
   );
@@ -50,27 +31,33 @@ export default function Home({ homeData, latestProducts, homeAds, categoriesData
 
 export async function getServerSideProps() {
   try {
-    const homeData = await getHomeData();
-    const latestProducts = await getLatestProducts();
-    const homeAds = await getHomeAds();
-    const categoriesData = await getCategories();
+    const [homeData, latestProducts, homeAds, categoriesData, limitedOfferData] = await Promise.all([
+      getHomeData(),
+      getLatestProducts(),
+      getHomeAds(),
+      getCategories(),
+      getLimitedOffer()
+    ]);
+
     return {
       props: {
         homeData: homeData.data,
         latestProducts: latestProducts.data,
         homeAds: homeAds.data,
         categoriesData: categoriesData.data,
+        limitedOfferData: limitedOfferData.data,
       },
     };
   } catch (error) {
+    console.error("Error fetching data:", error);
     return {
       props: {
         homeData: null,
         latestProducts: [],
         homeAds: null,
         categoriesData: [],
+        limitedOfferData: null,
       },
     };
   }
 }
-

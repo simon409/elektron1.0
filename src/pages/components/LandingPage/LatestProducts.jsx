@@ -16,7 +16,7 @@ const LatestProducts = ({latestProducts}) => {
                     finalPrice={product.attributes.finalPrice}
                     discount={product.attributes.discount}
                     slug={product.attributes.slug}
-                    imageUrl={product.attributes.image.data.attributes.url}
+                    imageUrl={product.attributes.image.data[0].attributes.url}
                 />
             ))}
         </div>

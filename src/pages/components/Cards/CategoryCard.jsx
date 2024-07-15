@@ -8,7 +8,7 @@ const CategoryCard = ({ categoryData }) => {
                     <div key={categoryData.id} className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 flex gap-2">
                         <div className="relative h-32 bg-gray-100">
                             <img
-                                src={categoryData.attributes.image.data.attributes.url}
+                                src={categoryData.attributes.image.data[0].attributes.url}
                                 alt={categoryData.attributes.category_name}
                                 className="object-cover w-44 h-32 mt-3"
                             />

@@ -29,7 +29,7 @@ const ProductCard = ({ name, price, discount, slug, finalPrice, imageUrl, id }) 
 
   return (
     <div key={id} className="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-      <Link href={`product/${slug}`}>
+      <Link href={`/product/${slug}`}>
         <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl bg-slate-100">
           <img className="object-cover mx-auto my-5" src={imageUrl} alt={name} />
           <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">{discount}% OFF</span>

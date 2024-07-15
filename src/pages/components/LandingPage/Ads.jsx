@@ -10,7 +10,7 @@ const Ads = ({homeAds}) => {
 
 
   return (
-    <div className='flex my-10 mx-10'>
+    <div className='flex my-10'>
         <div className='w-full'>
             <div className='h-60 flex justify-between py-10 px-24 rounded-lg' style={{
                 backgroundImage: `url(${backgroundImage})`,

@@ -16,6 +16,7 @@ const Product = ({ content }) => {
     useEffect(() => {
         fetchRating();
         fetchRelatedProducts();
+        console.log('Product:', content);
     }, [])
 
     useEffect(() => {
@@ -48,7 +49,7 @@ const Product = ({ content }) => {
     <main className='container min-h-screen pt-24'>
       <div className='grid grid-cols-2 gap-10'>
         <div className='w-full rounded-lg bg-gray-100 p-4 flex'>
-          <img src={attributes.image.data.attributes.url} alt={attributes.name} className='max-h-[500px] m-auto' />
+          <img src={attributes.image.data[0].attributes.url} alt={attributes.name} className='max-h-[500px] m-auto' />
         </div>
         <div className='flex flex-col justify-center'>
           <h1 className='text-4xl font-bold mb-4 text-black'>{attributes.name}</h1>
@@ -67,8 +68,8 @@ const Product = ({ content }) => {
           <p className='text-lg my-2 font-bold'>Features:</p>
           <ul className='text-lg list-disc ml-5'>
             {
-              attributes.features ? attributes.features[0].children.map((feature, index) => (
-                <li key={index} className='list-item'>{feature.children[0].text}</li>
+              attributes.description ? attributes.description.map((desc, index) => (
+                <li key={index} className='list-item'>{desc.children[0].text}</li>
               )) : <p></p>
             }
           </ul>
@@ -93,7 +94,7 @@ const Product = ({ content }) => {
                   rating={product.attributes.rating}
                   discount={product.attributes.discount}
                   slug={product.attributes.slug}
-                  imageUrl={product.attributes.image.data.attributes.url}
+                  imageUrl={product.attributes.image.data[0].attributes.url}
                 />
               )
           )) : <p>No related products found</p>}
